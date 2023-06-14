@@ -11,15 +11,7 @@ from db import db
 
 df = db()
 df.merge()
-day_names = {
-    0: "Poniedziałek",
-    1: "Wtorek",
-    2: "Środa",
-    3: "Czwartek",
-    4: "Piątek",
-    5: "Sobota",
-    6: "Niedziela",
-}
+
 external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
 app = dash.Dash(
     __name__,
@@ -194,7 +186,18 @@ def tab3_barh_Store_type(chosen_type):
     fig.update_layout(
         xaxis_title="Dni tygodnia",
         yaxis_title="liczba sprzedaży",
-        xaxis=dict(tickvals=grouped_day.index, ticktext=list(day_names.values())),
+        xaxis=dict(
+            tickvals=grouped_day.index,
+            ticktext=[
+                "Poniedziałek",
+                "Wtorek",
+                "Środa",
+                "Czwartek",
+                "Piątek",
+                "Sobota",
+                "Niedziela",
+            ],
+        ),
     )
     return fig
 
